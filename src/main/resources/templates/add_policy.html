@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New policy</title>
+</head>
+<body>
+<form th:action="@{/policies}" th:method="POST" th:object="${policy}">
+
+    <label for="clientName">Client name: </label>
+    <input id="clientName" th:field="*{clientName}" type="text">
+    <br>
+
+    <label for="startDate">Start date: </label>
+    <input id="startDate" th:field="*{startDate}" type="text">
+    In format YYYY-MM-DD
+    <br>
+
+    <label for="expirationDate">Expiration date: </label>
+    <input id="expirationDate" th:field="*{expirationDate}" type="text">
+    In format YYYY-MM-DD
+    <br>
+
+    <label for="policyType">Policy type: </label>
+    <select id="policyType" th:field="*{policyType}">
+        <option value="Comprehensive coverage">Comprehensive coverage</option>
+        <option value="Collision coverage">Collision coverage</option>
+    </select>
+    <br>
+
+    <input type="submit" value="Add">
+
+</form>
+
+</body>
+</html>

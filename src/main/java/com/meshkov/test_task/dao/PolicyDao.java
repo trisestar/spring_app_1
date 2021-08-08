@@ -16,7 +16,7 @@ public class PolicyDao {
     private static final String SQL_LOAD_ALL = "SELECT * from policy";
     private static final String SQL_INSERT =
             "INSERT INTO `policiesdb`.`policy` (`client_name`, `start_date`, `expiration_date`, `policy_type`) " +
-                    "VALUES ('Joe', '2003-11-11', '2022-11-11', 'Comprehensive coverage');";
+                    "VALUES (?, ?, ?, ?);";
 
     private static Connection connection;
 
@@ -53,6 +53,21 @@ public class PolicyDao {
             e.printStackTrace();
         }
         return policies;
+    }
+
+    public void addPolicy(Policy policy) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT)) {
+
+            preparedStatement.setString(1, policy.getClientName());
+            preparedStatement.setString(2, policy.getStartDate());
+            preparedStatement.setString(3, policy.getExpirationDate());
+            preparedStatement.setString(4, policy.getPolicyType());
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

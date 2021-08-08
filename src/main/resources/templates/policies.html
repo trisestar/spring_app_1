@@ -19,9 +19,16 @@
         <td th:text="${policy.getClientName()}"></td>
         <td th:text="${policy.getStartDate()}"></td>
         <td th:text="${policy.getExpirationDate()}"></td>
-        <td th:text="${policy.getPolicyType()}"></td>
+        <td th:text="${policy.getPolicyType()}">
+            <a href="/policies">to policies</a>
+        </td>
+
     </tr>
 </table>
+
+<br>
+
+<a href="/policies/add">New policy</a>
 
 </body>
 </html>

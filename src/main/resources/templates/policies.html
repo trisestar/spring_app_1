@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Policies</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Client name</th>
+        <th>Start date</th>
+        <th>Expiration date</th>
+        <th>Policy type</th>
+    </tr>
+    <tr th:each="policy : ${policies}">
+        <td th:text="${policy.getId()}"></td>
+        <td th:text="${policy.getClientName()}"></td>
+        <td th:text="${policy.getStartDate()}"></td>
+        <td th:text="${policy.getExpirationDate()}"></td>
+        <td th:text="${policy.getPolicyType()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

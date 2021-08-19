@@ -3,11 +3,11 @@ package com.meshkov.test_task.model;
 import java.util.Objects;
 
 public class Policy {
-    int id;
-    String clientName;
-    String startDate;
-    String expirationDate;
-    String policyType;
+    private int id;
+    private String clientName;
+    private String startDate;
+    private String expirationDate;
+    private String policyType;
 
     public Policy() {
     }

@@ -8,16 +8,18 @@
 <form th:action="@{/policies}" th:method="POST" th:object="${policy}">
 
     <label for="clientName">Client name: </label>
-    <input required minlength="3" maxlength="20" id="clientName" th:field="*{clientName}" type="text">
+    <input id="clientName" maxlength="20" minlength="3" required th:field="*{clientName}" type="text">
     <br>
 
     <label for="startDate">Start date: </label>
-    <input required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" id="startDate" th:field="*{startDate}" type="text">
+    <input id="startDate" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" required
+           th:field="*{startDate}" type="text">
     In format YYYY-MM-DD
     <br>
 
     <label for="expirationDate">Expiration date: </label>
-    <input required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" id="expirationDate" th:field="*{expirationDate}" type="text">
+    <input id="expirationDate" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" required
+           th:field="*{expirationDate}" type="text">
     In format YYYY-MM-DD
     <br>
 

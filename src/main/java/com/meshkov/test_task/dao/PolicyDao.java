@@ -1,6 +1,8 @@
 package com.meshkov.test_task.dao;
 
 import com.meshkov.test_task.model.Policy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -9,10 +11,11 @@ import java.util.List;
 
 @Component
 public class PolicyDao {
+    private static final Logger logger = LoggerFactory.getLogger(PolicyDao.class);
 
     private static final String URL = "jdbc:mysql://localhost:3306/policiesdb";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "retevo123";
+    private static final String PASSWORD = "********";
     private static final String SQL_LOAD_ALL = "SELECT * from policy";
     private static final String SQL_INSERT =
             "INSERT INTO `policiesdb`.`policy` (`client_name`, `start_date`, `expiration_date`, `policy_type`) " +
@@ -24,12 +27,12 @@ public class PolicyDao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error(String.valueOf(e));
         }
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(String.valueOf(e));
         }
     }
 
@@ -50,7 +53,7 @@ public class PolicyDao {
                 policies.add(policy);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(String.valueOf(e));
         }
         return policies;
     }
@@ -65,7 +68,7 @@ public class PolicyDao {
 
             preparedStatement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(String.valueOf(e));
         }
 
     }
